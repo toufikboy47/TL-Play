@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="theme-color" content="#0f0f0f">
+    <meta name="description" content="YouTube Clone - Watch videos, search, and discover content">
+    <title>YouTube Clone</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="header-left">
+            <button class="menu-btn" id="menuBtn" aria-label="Toggle menu">
+                <i class="fas fa-bars"></i>
+            </button>
+            <a href="#" class="logo" onclick="goHome(); return false;">
+                <i class="fab fa-youtube"></i>
+                <span>TouFik</span>
+            </a>
+        </div>
+        <div class="header-center">
+            <div class="search-container">
+                <input type="text" class="search-input" id="searchInput" placeholder="Search" aria-label="Search">
+                <button class="search-btn" id="searchBtn" aria-label="Search">
+                    <i class="fas fa-search"></i>
+                </button>
+            </div>
+            <button class="voice-search-btn" aria-label="Voice search">
+                <i class="fas fa-microphone"></i>
+            </button>
+        </div>
+        <div class="header-right">
+            <button class="header-btn" aria-label="Create video">
+                <i class="fas fa-video"></i>
+            </button>
+            <button class="header-btn" aria-label="Notifications">
+                <i class="fas fa-bell"></i>
+            </button>
+            <button class="header-btn user-btn" aria-label="User profile">
+                <i class="fas fa-user"></i>
+            </button>
+        </div>
+    </header>
+
+    <!-- Mobile Search Bar -->
+    <div class="mobile-search-bar" id="mobileSearchBar">
+        <button class="mobile-back-btn" id="mobileBackBtn">
+            <i class="fas fa-arrow-left"></i>
+        </button>
+        <div class="mobile-search-input-container">
+            <input type="text" class="mobile-search-input" id="mobileSearchInput" placeholder="Search" aria-label="Search">
+            <button class="mobile-search-btn" id="mobileSearchBtn">
+                <i class="fas fa-search"></i>
+            </button>
+        </div>
+    </div>
+
+    <!-- Mobile Bottom Navigation -->
+    <nav class="mobile-bottom-nav" id="mobileBottomNav">
+        <a href="#" class="mobile-nav-item active" onclick="goHome(); return false;">
+            <i class="fas fa-home"></i>
+            <span>Home</span>
+        </a>
+        <a href="#" class="mobile-nav-item" onclick="openMobileSearch(); return false;">
+            <i class="fas fa-search"></i>
+            <span>Search</span>
+        </a>
+        <a href="#" class="mobile-nav-item">
+            <i class="fas fa-plus-square"></i>
+            <span>Shorts</span>
+        </a>
+        <a href="#" class="mobile-nav-item">
+            <i class="fas fa-play-circle"></i>
+            <span>Subs</span>
+        </a>
+        <a href="#" class="mobile-nav-item">
+            <i class="fas fa-folder"></i>
+            <span>Library</span>
+        </a>
+    </nav>
+
+    <!-- Main Container -->
+    <div class="main-container">
+        <!-- Sidebar Overlay -->
+        <div class="sidebar-overlay" id="sidebarOverlay"></div>
+        
+        <!-- Sidebar -->
+        <aside class="sidebar" id="sidebar">
+            <div class="sidebar-header">
+                <button class="menu-btn" id="sidebarCloseBtn">
+                    <i class="fas fa-arrow-left"></i>
+                </button>
+                <a href="#" class="logo-small" onclick="goHome(); return false;">
+                    <i class="fab fa-youtube"></i>
+                    <span>YouTube</span>
+                </a>
+            </div>
+            <div class="sidebar-section">
+                <a href="#" class="sidebar-item active" onclick="goHome(); return false;">
+                    <i class="fas fa-home"></i>
+                    <span>Home</span>
+                </a>
+                <a href="#" class="sidebar-item">
+                    <i class="fas fa-fire"></i>
+                    <span>Trending</span>
+                </a>
+                <a href="#" class="sidebar-item">
+                    <i class="fas fa-play-circle"></i>
+                    <span>Subscriptions</span>
+                </a>
+            </div>
+            <div class="sidebar-divider"></div>
+            <div class="sidebar-section">
+                <h3 class="sidebar-title">Library</h3>
+                <a href="#" class="sidebar-item">
+                    <i class="fas fa-history"></i>
+                    <span>History</span>
+                </a>
+                <a href="#" class="sidebar-item">
+                    <i class="fas fa-clock"></i>
+                    <span>Watch Later</span>
+                </a>
+                <a href="#" class="sidebar-item">
+                    <i class="fas fa-thumbs-up"></i>
+                    <span>Liked Videos</span>
+                </a>
+            </div>
+            <div class="sidebar-divider"></div>
+            <div class="sidebar-section">
+                <h3 class="sidebar-title">Categories</h3>
+                <a href="#" class="sidebar-item category-item" data-category="music">
+                    <i class="fas fa-music"></i>
+                    <span>Music</span>
+                </a>
+                <a href="#" class="sidebar-item category-item" data-category="sports">
+                    <i class="fas fa-futbol"></i>
+                    <span>Sports</span>
+                </a>
+                <a href="#" class="sidebar-item category-item" data-category="gaming">
+                    <i class="fas fa-gamepad"></i>
+                    <span>Gaming</span>
+                </a>
+                <a href="#" class="sidebar-item category-item" data-category="movies">
+                    <i class="fas fa-film"></i>
+                    <span>Movies</span>
+                </a>
+                <a href="#" class="sidebar-item category-item" data-category="news">
+                    <i class="fas fa-newspaper"></i>
+                    <span>News</span>
+                </a>
+                <a href="#" class="sidebar-item category-item" data-category="live">
+                    <i class="fas fa-broadcast-tower"></i>
+                    <span>Live</span>
+                </a>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content" id="mainContent">
+            <!-- Categories Bar -->
+            <div class="categories-bar" id="categoriesBar">
+                <button class="category-chip active" data-category="all">All</button>
+                <button class="category-chip" data-category="music">Music</button>
+                <button class="category-chip" data-category="sports">Sports</button>
+                <button class="category-chip" data-category="gaming">Gaming</button>
+                <button class="category-chip" data-category="movies">Movies</button>
+                <button class="category-chip" data-category="news">News</button>
+                <button class="category-chip" data-category="live">Live</button>
+                <button class="category-chip" data-category="education">Education</button>
+                <button class="category-chip" data-category="technology">Technology</button>
+                <button class="category-chip" data-category="comedy">Comedy</button>
+                <button class="category-chip" data-category="entertainment">Entertainment</button>
+            </div>
+
+            <!-- Video Grid -->
+            <div class="video-grid" id="videoGrid">
+                <!-- Videos will be loaded here -->
+            </div>
+
+            <!-- Loading Spinner -->
+            <div class="loading" id="loading">
+                <div class="spinner"></div>
+            </div>
+
+            <!-- No Results Message -->
+            <div class="no-results" id="noResults" style="display: none;">
+                <i class="fas fa-search"></i>
+                <h2>No results found</h2>
+                <p>Try different keywords or browse trending videos</p>
+            </div>
+        </main>
+    </div>
+
+    <!-- Video Player Modal -->
+    <div class="video-modal" id="videoModal">
+        <div class="video-modal-content">
+            <button class="close-modal" id="closeModal" aria-label="Close video">
+                <i class="fas fa-times"></i>
+            </button>
+            <div class="video-container">
+                <div class="video-wrapper">
+                    <iframe id="videoPlayer" src="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
+            </div>
+            <div class="video-info" id="videoInfo">
+                <!-- Video info will be loaded here -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast Notification -->
+    <div class="toast" id="toast">
+        <span id="toastMessage"></span>
+    </div>
+
+    <!-- Loading Overlay -->
+    <div class="loading-overlay" id="loadingOverlay">
+        <div class="loading-spinner">
+            <div class="spinner-large"></div>
+            <p>Loading...</p>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
